@@ -1,0 +1,18 @@
+repos:
+  # Formatierung bei jedem commit
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+        stages: [pre-commit]
+
+  # Tests bei jedem push
+  - repo: local
+    hooks:
+      - id: pytest
+        name: pytest
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-push]
